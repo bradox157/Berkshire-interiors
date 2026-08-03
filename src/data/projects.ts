@@ -85,8 +85,8 @@ export const projects: Project[] = [
     type: 'Commercial',
     category: 'Wellness & Leisure',
     location: 'Nairobi',
-    image: '/images/projects/pool-finished-after.jpg',
-    beforeImage: '/images/projects/pool-construction-before.jpg',
+    image: '/images/pool-finished-after.jpg',
+    beforeImage: '/images/pool-construction-before.jpg',
     span: 'tall',
   },
   {
@@ -95,7 +95,7 @@ export const projects: Project[] = [
     type: 'Commercial',
     category: 'Wellness & Leisure',
     location: 'Nairobi',
-    image: '/images/projects/gym.jpg',
+    image: '/images/gym.jpg',
   },
   {
     id: 'c3',
@@ -103,7 +103,7 @@ export const projects: Project[] = [
     type: 'Commercial',
     category: 'Spa',
     location: 'Nairobi',
-    image: '/images/projects/spa-reception.jpg',
+    image: '/images/spa-reception.jpg',
     span: 'wide',
   },
   {
@@ -112,7 +112,7 @@ export const projects: Project[] = [
     type: 'Commercial',
     category: 'Spa',
     location: 'Nairobi',
-    image: '/images/projects/spa-treatment-room.jpg',
+    image: '/images/spa-treatment-room.jpg',
   },
   {
     id: 'c5',
@@ -120,7 +120,7 @@ export const projects: Project[] = [
     type: 'Commercial',
     category: 'Salon',
     location: 'Nairobi',
-    image: '/images/projects/barbershop.jpg',
+    image: '/images/barbershop.jpg',
   },
   {
     id: 'c6',
@@ -128,7 +128,7 @@ export const projects: Project[] = [
     type: 'Commercial',
     category: 'Salon',
     location: 'Nairobi',
-    image: '/images/projects/salon-styling-area.jpg',
+    image: '/images/salon-styling-area.jpg',
     span: 'wide',
   },
   {
@@ -137,7 +137,7 @@ export const projects: Project[] = [
     type: 'Commercial',
     category: 'Salon',
     location: 'Nairobi',
-    image: '/images/projects/salon-pedicure-area.jpg',
+    image: '/images/salon-pedicure-area.jpg',
   },
   {
     id: 'c8',
@@ -145,7 +145,7 @@ export const projects: Project[] = [
     type: 'Commercial',
     category: 'Spa',
     location: 'Nairobi',
-    image: '/images/projects/reception-lounge.jpg',
+    image: '/images/reception-lounge.jpg',
   },
   {
     id: 'c9',
@@ -153,7 +153,7 @@ export const projects: Project[] = [
     type: 'Commercial',
     category: 'Salon',
     location: 'Nairobi',
-    image: '/images/projects/nail-bar.jpg',
+    image: '/images/nail-bar.jpg',
   },
   {
     id: 'c10',
@@ -161,7 +161,7 @@ export const projects: Project[] = [
     type: 'Commercial',
     category: 'Wellness & Leisure',
     location: 'Nairobi',
-    image: '/images/projects/sauna.jpg',
+    image: '/images/sauna.jpg',
   },
   {
     id: 'p8',
