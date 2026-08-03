@@ -1,101 +1,133 @@
 import {
-  Sofa,
-  PaintRoller,
+  Ruler,
   Hammer,
-  LayoutGrid,
   Building2,
+  ChefHat,
+  Bath,
+  Layers,
+  PaintRoller,
+  LayoutGrid,
+  Lightbulb,
+  Armchair,
+  Blinds,
+  Archive,
+  PaintBucket,
+  Building,
+  ClipboardList,
   type LucideIcon,
 } from 'lucide-react';
 
 export type Service = {
   id: string;
   title: string;
-  tagline: string;
   description: string;
   icon: LucideIcon;
-  features: string[];
-  image: string;
 };
 
 export const services: Service[] = [
   {
-    id: 'interior-decorating',
-    title: 'Interior Decorating',
-    tagline: 'Curated spaces with soul',
+    id: 'interior-design-space-planning',
+    title: 'Interior Design & Space Planning',
     description:
-      'From concept to final styling, we craft interiors that balance elegance, comfort and function — tailored to how you live and entertain.',
-    icon: Sofa,
-    features: [
-      'Space planning & mood boards',
-      'Furniture & soft-furnishing curation',
-      'Lighting & colour consultation',
-      'Final styling & accessorising',
-    ],
-    image:
-      'https://images.pexels.com/photos/8135492/pexels-photo-8135492.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'Thoughtful layouts and design concepts that make every room work harder and feel better.',
+    icon: Ruler,
+  },
+  {
+    id: 'home-renovations-remodeling',
+    title: 'Home Renovations & Remodeling',
+    description:
+      'Full home makeovers that refresh tired spaces without losing what makes them yours.',
+    icon: Hammer,
+  },
+  {
+    id: 'office-design-fit-outs',
+    title: 'Office Design & Fit-Outs',
+    description:
+      'Functional, professional workspaces designed and fitted out from the ground up.',
+    icon: Building2,
+  },
+  {
+    id: 'kitchen-design-installation',
+    title: 'Kitchen Design & Installation',
+    description:
+      'Custom kitchen layouts, cabinetry and installation built around how you cook and gather.',
+    icon: ChefHat,
+  },
+  {
+    id: 'bathroom-remodeling',
+    title: 'Bathroom Remodeling',
+    description:
+      'Modern, durable bathroom upgrades — from fittings and tiling to full reconfigurations.',
+    icon: Bath,
+  },
+  {
+    id: 'gypsum-ceilings-decorative-features',
+    title: 'Gypsum Ceilings & Decorative Features',
+    description:
+      'Statement ceilings and decorative detailing that add character and depth overhead.',
+    icon: Layers,
+  },
+  {
+    id: 'painting-decorative-finishes',
+    title: 'Painting & Decorative Finishes',
+    description:
+      'Precision interior painting and decorative finishes for a flawless, lasting result.',
+    icon: PaintRoller,
+  },
+  {
+    id: 'flooring-installation',
+    title: 'Flooring Installation',
+    description:
+      'Expert fitting of tile, wood, laminate and more — a solid foundation for every room.',
+    icon: LayoutGrid,
+  },
+  {
+    id: 'lighting-design',
+    title: 'Lighting Design',
+    description:
+      'Layered lighting plans that set the mood and highlight your space at every hour.',
+    icon: Lightbulb,
+  },
+  {
+    id: 'custom-furniture-joinery',
+    title: 'Custom Furniture & Joinery',
+    description:
+      "Bespoke furniture and joinery, built to measure for spaces off-the-shelf can't fit.",
+    icon: Armchair,
+  },
+  {
+    id: 'curtains-blinds-soft-furnishings',
+    title: 'Curtains, Blinds & Soft Furnishings',
+    description:
+      'Curtains, blinds and soft furnishings selected and fitted to finish a room properly.',
+    icon: Blinds,
+  },
+  {
+    id: 'wardrobes-storage-solutions',
+    title: 'Wardrobes & Storage Solutions',
+    description:
+      'Built-in wardrobes and smart storage that keep every room clutter-free and organised.',
+    icon: Archive,
   },
   {
     id: 'exterior-painting',
     title: 'Exterior Painting',
-    tagline: 'A flawless first impression',
     description:
-      'Premium, weather-resistant finishes that protect and elevate your façade. We prep meticulously so the colour stays true through Nairobi seasons.',
-    icon: PaintRoller,
-    features: [
-      'Surface prep & crack repair',
-      'Premium weatherproof coatings',
-      'Colour matching & sampling',
-      'Render & stucco restoration',
-    ],
-    image:
-      'https://images.pexels.com/photos/18968164/pexels-photo-18968164.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'Weather-resistant exterior finishes that protect your property and elevate its façade.',
+    icon: PaintBucket,
   },
   {
-    id: 'remodelling',
-    title: 'Remodelling',
-    tagline: 'Reimagine what you have',
+    id: 'commercial-interior-design',
+    title: 'Commercial Interior Design',
     description:
-      'Kitchens, bathrooms and full-home remodels — we modernise tired spaces while preserving character, on schedule and on budget.',
-    icon: Hammer,
-    features: [
-      'Kitchen & bathroom remodels',
-      'Wall & partition reconfiguration',
-      'Plumbing & electrical upgrades',
-      'Custom cabinetry & joinery',
-    ],
-    image:
-      'https://images.pexels.com/photos/36511383/pexels-photo-36511383.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'Interiors for retail, hospitality and commercial spaces designed to work for your brand.',
+    icon: Building,
   },
   {
-    id: 'floor-fitting',
-    title: 'Floor Fitting',
-    tagline: 'Grounded in craftsmanship',
+    id: 'project-management-site-supervision',
+    title: 'Project Management & Site Supervision',
     description:
-      'Hardwood, parquet, tile and polished concrete — precision-fitted floors that anchor a room and last for decades.',
-    icon: LayoutGrid,
-    features: [
-      'Hardwood & engineered timber',
-      'Herringbone & parquet patterns',
-      'Porcelain & natural stone tile',
-      'Subfloor prep & levelling',
-    ],
-    image:
-      'https://images.pexels.com/photos/15066939/pexels-photo-15066939.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  },
-  {
-    id: 'construction',
-    title: 'Construction Company',
-    tagline: 'Built from the ground up',
-    description:
-      'Full residential and commercial construction — from foundations to handover, with rigorous project management and trusted subcontractors.',
-    icon: Building2,
-    features: [
-      'New builds & extensions',
-      'Structural & foundation works',
-      'Project management & scheduling',
-      'Quality control & handover',
-    ],
-    image:
-      'https://images.pexels.com/photos/31197870/pexels-photo-31197870.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'Hands-on project management and site supervision, keeping every job on time and on budget.',
+    icon: ClipboardList,
   },
 ];
