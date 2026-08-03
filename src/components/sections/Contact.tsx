@@ -11,7 +11,7 @@ type Status = 'idle' | 'submitting' | 'success' | 'error';
 const contactInfo = [
   { icon: MapPin, label: 'Visit us', value: 'Woodlands Mall, Wood Ave, Nairobi' },
   { icon: Phone, label: 'Call us', value: '0713 496125', href: 'tel:0713496125' },
-  { icon: Mail, label: 'Email us', value: 'hello@berkshireluxury.co.ke', href: 'mailto:hello@berkshireluxury.co.ke' },
+  { icon: Mail, label: 'Email us', value: 'berkshireluxuryinteriors@gmail.com', href: 'mailto:berkshireluxuryinteriors@gmail.com' },
   { icon: Clock, label: 'Working hours', value: 'Mon – Sat: 8:00am – 6:00pm' },
 ];
 
