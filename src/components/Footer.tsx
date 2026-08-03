@@ -100,10 +100,10 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <Mail size={16} className="mt-0.5 shrink-0 text-emerald-400" />
                 <a
-                  href="mailto:hello@berkshireluxury.co.ke"
+                  href="mailto:berkshireluxuryinteriors@gmail.com"
                   className="text-cream-200/80 transition-colors hover:text-emerald-300"
                 >
-                  hello@berkshireluxury.co.ke
+                  berkshireluxuryinteriors@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
