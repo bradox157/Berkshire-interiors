@@ -7,8 +7,8 @@ export function Hero() {
       {/* Background */}
       <div className="absolute inset-0">
         <img
-          src="https://images.pexels.com/photos/34688219/pexels-photo-34688219.jpeg?auto=compress&cs=tinysrgb&w=1920"
-          alt="Luxurious modern living room with elegant sofas and warm lighting"
+          src="/images/hero-bg.png"
+          alt="Elegant green-themed spa lounge with wooden loungers and sheer curtains"
           className="hero-zoom h-full w-full object-cover"
           loading="eager"
           fetchPriority="high"
