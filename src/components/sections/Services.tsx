@@ -1,13 +1,9 @@
-import { useState } from 'react';
 import { services } from '@/data/services';
 import { SectionHeading } from '@/components/SectionHeading';
 import { Reveal } from '@/components/Reveal';
-import { Check, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export function Services() {
-  const [active, setActive] = useState(0);
-  const service = services[active];
-
   return (
     <section id="services" className="relative bg-cream-50 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -15,78 +11,39 @@ export function Services() {
           eyebrow="What We Do"
           title={
             <>
-              Five disciplines, <span className="italic text-emerald-700">one standard.</span>
+              Comprehensive interior{' '}
+              <span className="italic text-emerald-700">& renovation solutions.</span>
             </>
           }
-          description="Every service is led by specialists and held to the same exacting finish — because luxury lives in the details you only notice when they’re perfect."
+          description="We offer end-to-end interior and renovation solutions, all delivered with a commitment to quality, functionality and timeless design."
         />
 
-        {/* Service selector tabs */}
-        <div className="mt-14 flex flex-wrap justify-center gap-2.5">
-          {services.map((s, i) => (
-            <button
-              key={s.id}
-              onClick={() => setActive(i)}
-              className={`group inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-300 ${
-                active === i
-                  ? 'bg-ink-900 text-cream-50 shadow-lg shadow-ink-900/15'
-                  : 'bg-white text-ink-700 hover:bg-ink-100'
-              }`}
-            >
-              <s.icon size={16} className={active === i ? 'text-emerald-400' : 'text-emerald-700'} />
-              {s.title}
-            </button>
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {services.map((service, i) => (
+            <Reveal key={service.id} delay={i * 40}>
+              <div className="group h-full rounded-2xl border border-ink-900/5 bg-white p-6 shadow-sm shadow-ink-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-ink-900/10 sm:p-7">
+                <div className="grid h-12 w-12 place-items-center rounded-xl bg-emerald-50 text-emerald-700 transition-colors duration-300 group-hover:bg-emerald-600 group-hover:text-white">
+                  <service.icon size={22} />
+                </div>
+                <h3 className="mt-5 font-serif text-lg font-medium leading-snug text-ink-900">
+                  {service.title}
+                </h3>
+                <p className="mt-2.5 text-sm leading-relaxed text-ink-600">
+                  {service.description}
+                </p>
+              </div>
+            </Reveal>
           ))}
         </div>
 
-        {/* Active service detail */}
-        <Reveal key={service.id} className="mt-12">
-          <div className="grid overflow-hidden rounded-3xl bg-white shadow-xl shadow-ink-900/5 lg:grid-cols-2">
-            <div className="relative min-h-[320px] overflow-hidden lg:min-h-full">
-              <img
-                key={service.image}
-                src={service.image}
-                alt={service.title}
-                className="h-full w-full animate-fade-in object-cover"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink-950/30 to-transparent" />
-              <div className="absolute bottom-6 left-6 inline-flex items-center gap-2 rounded-full bg-cream-50/95 px-4 py-2 text-xs font-semibold text-ink-800 backdrop-blur">
-                <service.icon size={14} className="text-emerald-700" />
-                {service.tagline}
-              </div>
-            </div>
-
-            <div className="flex flex-col justify-center p-8 sm:p-12">
-              <span className="eyebrow">
-                <span className="h-px w-8 bg-emerald-600" />
-                Service
-              </span>
-              <h3 className="mt-4 font-serif text-3xl font-medium text-ink-900">
-                {service.title}
-              </h3>
-              <p className="mt-4 text-base leading-relaxed text-ink-600">
-                {service.description}
-              </p>
-              <ul className="mt-7 grid gap-3 sm:grid-cols-2">
-                {service.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-sm text-ink-700">
-                    <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-emerald-100 text-emerald-700">
-                      <Check size={12} strokeWidth={3} />
-                    </span>
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <a
-                href="#contact"
-                className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold text-ink-900 transition-colors hover:text-emerald-700"
-              >
-                Enquire about {service.title}
-                <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-              </a>
-            </div>
-          </div>
+        <Reveal className="mt-12 flex justify-center">
+          <a
+            href="#contact"
+            className="group inline-flex items-center gap-2 rounded-full bg-ink-900 px-6 py-3 text-sm font-semibold text-cream-50 transition-colors hover:bg-ink-800"
+          >
+            Discuss Your Project
+            <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+          </a>
         </Reveal>
       </div>
     </section>
