@@ -31,8 +31,15 @@ export function Hero() {
             </span>
           </div>
 
+          <p
+            className="mt-6 animate-fade-up text-sm font-semibold uppercase tracking-[0.3em] text-emerald-300"
+            style={{ animationDelay: '60ms' }}
+          >
+            Design. Build. Transform.
+          </p>
+
           <h1
-            className="mt-6 animate-fade-up font-serif text-4xl font-medium leading-[1.05] text-cream-50 text-balance sm:text-6xl lg:text-7xl"
+            className="mt-4 animate-fade-up font-serif text-4xl font-medium leading-[1.05] text-cream-50 text-balance sm:text-6xl lg:text-7xl"
             style={{ animationDelay: '100ms' }}
           >
             Where Nairobi’s finest
@@ -43,8 +50,9 @@ export function Hero() {
             className="mt-7 max-w-xl animate-fade-up text-lg leading-relaxed text-cream-100/85"
             style={{ animationDelay: '240ms' }}
           >
-            Interior decorating, exterior painting, remodelling, floor fitting and full construction —
-            delivered with uncompromising craftsmanship and a curator’s eye for detail.
+            We design and create beautiful, functional spaces that reflect your lifestyle,
+            personality and vision. From luxury homes and modern offices to commercial spaces and
+            renovations, we deliver exceptional interiors with unmatched attention to detail.
           </p>
 
           <div
