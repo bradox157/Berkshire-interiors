@@ -41,7 +41,7 @@ export function Footer() {
               <span className="flex flex-col leading-none">
                 <span className="font-serif text-lg font-semibold text-cream-50">Berkshire</span>
                 <span className="text-[0.625rem] font-medium uppercase tracking-[0.28em] text-emerald-400">
-                  Luxury Interiors
+                  Luxury Interiors Kenya
                 </span>
               </span>
             </div>
