@@ -8,11 +8,7 @@ export type Project = {
   location: string;
   /** "After" / main image. */
   image: string;
-  /**
-   * "Before" image. When present, the card shows a Before/After toggle.
-   * PLACEHOLDER PAIRING — swap for a real before/after photo of the same
-   * project once available.
-   */
+  /** "Before" image. When present, the card shows an auto-cycling Before/After toggle. */
   beforeImage?: string;
   span?: 'wide' | 'tall' | 'normal';
 };
@@ -20,65 +16,7 @@ export type Project = {
 export const projectTypes = ['Commercial', 'Residential'] as const;
 
 export const projects: Project[] = [
-  {
-    id: 'p1',
-    title: 'Karen Family Residence',
-    type: 'Residential',
-    category: 'Interiors',
-    location: 'Karen, Nairobi',
-    image:
-      'https://images.pexels.com/photos/34688219/pexels-photo-34688219.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    // PLACEHOLDER before image — replace with the real "before" shot of this project.
-    beforeImage:
-      'https://images.pexels.com/photos/6585757/pexels-photo-6585757.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    span: 'wide',
-  },
-  {
-    id: 'p2',
-    title: 'Westlands Marble Kitchen',
-    type: 'Residential',
-    category: 'Kitchens',
-    location: 'Westlands, Nairobi',
-    image:
-      'https://images.pexels.com/photos/36511383/pexels-photo-36511383.jpeg?auto=compress&cs=tinysrgb&w=900',
-  },
-  {
-    id: 'p3',
-    title: 'Lavington Master Suite',
-    type: 'Residential',
-    category: 'Bedrooms',
-    location: 'Lavington, Nairobi',
-    image:
-      'https://images.pexels.com/photos/8135248/pexels-photo-8135248.jpeg?auto=compress&cs=tinysrgb&w=900',
-  },
-  {
-    id: 'p4',
-    title: 'Kilimani Penthouse Living',
-    type: 'Residential',
-    category: 'Interiors',
-    location: 'Kilimani, Nairobi',
-    image:
-      'https://images.pexels.com/photos/7546323/pexels-photo-7546323.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    span: 'wide',
-  },
-  {
-    id: 'p5',
-    title: 'Runda Façade Refresh',
-    type: 'Residential',
-    category: 'Exteriors',
-    location: 'Runda, Nairobi',
-    image:
-      'https://images.pexels.com/photos/18968164/pexels-photo-18968164.jpeg?auto=compress&cs=tinysrgb&w=900',
-  },
-  {
-    id: 'p6',
-    title: 'Kileleshwa Herringbone Floors',
-    type: 'Residential',
-    category: 'Interiors',
-    location: 'Spring Valley, Nairobi',
-    image:
-      'https://images.pexels.com/photos/15066939/pexels-photo-15066939.jpeg?auto=compress&cs=tinysrgb&w=900',
-  },
+  // ── Commercial ──────────────────────────────────────────────
   {
     id: 'c1',
     title: 'Indoor Swimming Pool',
@@ -163,50 +101,109 @@ export const projects: Project[] = [
     location: 'Nairobi',
     image: '/images/sauna.jpg',
   },
+
+  // ── Residential ─────────────────────────────────────────────
   {
-    id: 'p8',
-    title: 'Kileleshwa Classic Bedroom',
+    id: 'r1',
+    title: 'Bright Living Room',
     type: 'Residential',
-    category: 'Bedrooms',
-    location: 'Kileleshwa, Nairobi',
-    image:
-      'https://images.pexels.com/photos/8141958/pexels-photo-8141958.jpeg?auto=compress&cs=tinysrgb&w=900',
-  },
-  {
-    id: 'p9',
-    title: 'Muthaiga Chef’s Kitchen',
-    type: 'Residential',
-    category: 'Kitchens',
-    location: 'Muthaiga, Nairobi',
-    image:
-      'https://images.pexels.com/photos/36777912/pexels-photo-36777912.jpeg?auto=compress&cs=tinysrgb&w=900',
-  },
-  {
-    id: 'p10',
-    title: 'Rosslyn Ridge Living',
-    type: 'Residential',
-    category: 'Interiors',
-    location: 'Rosslyn, Nairobi',
-    image:
-      'https://images.pexels.com/photos/8135492/pexels-photo-8135492.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    category: 'New Build',
+    location: 'Nairobi',
+    image: '/images/living-room-bright.jpg',
     span: 'wide',
   },
   {
-    id: 'p11',
-    title: 'Nyari Estate Exterior',
-    type: 'Residential',
-    category: 'Exteriors',
-    location: 'Nyari, Nairobi',
-    image:
-      'https://images.pexels.com/photos/35713650/pexels-photo-35713650.jpeg?auto=compress&cs=tinysrgb&w=900',
-  },
-  {
-    id: 'p12',
-    title: 'Parklands Parquet Detail',
+    id: 'r2',
+    title: 'Open-Plan Living & Bar',
     type: 'Residential',
     category: 'Interiors',
-    location: 'Parklands, Nairobi',
-    image:
-      'https://images.pexels.com/photos/20843726/pexels-photo-20843726.jpeg?auto=compress&cs=tinysrgb&w=900',
+    location: 'Nairobi',
+    image: '/images/living-dining-bar.jpg',
+  },
+  {
+    id: 'r3',
+    title: 'Fitted Kitchen',
+    type: 'Residential',
+    category: 'Kitchens',
+    location: 'Nairobi',
+    image: '/images/kitchen-cream-cabinets.jpg',
+  },
+  {
+    id: 'r4',
+    title: 'Guest Bedroom Suite',
+    type: 'Residential',
+    category: 'Bedrooms',
+    location: 'Nairobi',
+    image: '/images/guest-bedroom-suite.jpg',
+    span: 'tall',
+  },
+  {
+    id: 'r5',
+    title: 'Blue Lounge',
+    type: 'Residential',
+    category: 'Interiors',
+    location: 'Nairobi',
+    image: '/images/blue-lounge.jpg',
+  },
+  {
+    id: 'r6',
+    title: 'Deluxe Bedroom Suite',
+    type: 'Residential',
+    category: 'Bedrooms',
+    location: 'Nairobi',
+    image: '/images/deluxe-bedroom-suite.jpg',
+    span: 'wide',
+  },
+  {
+    id: 'r7',
+    title: 'Modern Fitted Kitchen',
+    type: 'Residential',
+    category: 'Kitchens',
+    location: 'Nairobi',
+    image: '/images/kitchen-grey-pantry.jpg',
+  },
+  {
+    id: 'r8',
+    title: 'Compact Living Room',
+    type: 'Residential',
+    category: 'Interiors',
+    location: 'Nairobi',
+    image: '/images/compact-living-room.jpg',
+  },
+  {
+    id: 'r9',
+    title: 'En-suite Bathroom',
+    type: 'Residential',
+    category: 'Bathrooms',
+    location: 'Nairobi',
+    image: '/images/ensuite-bathroom.jpg',
+  },
+  {
+    id: 'r10',
+    title: 'Kitchen Fit-Out',
+    type: 'Residential',
+    category: 'Kitchens',
+    location: 'Nairobi',
+    image: '/images/kitchen-fitout.jpg',
+  },
+  {
+    id: 'r11',
+    title: 'New Build Living Room',
+    type: 'Residential',
+    category: 'New Build',
+    location: 'Nairobi',
+    image: '/images/new-build-living-room.jpg',
+    span: 'wide',
+  },
+  // Before/After kept last — real matching pair, shown on an auto-cycling toggle.
+  {
+    id: 'r12',
+    title: 'Bedroom Makeover',
+    type: 'Residential',
+    category: 'Bedrooms',
+    location: 'Nairobi',
+    image: '/images/bedroom-after.jpg',
+    beforeImage: '/images/bedroom-before.jpg',
+    span: 'tall',
   },
 ];
