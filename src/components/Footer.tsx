@@ -1,145 +1,126 @@
-import { useEffect, useState } from 'react';
-import { Menu, X, Phone, Star } from 'lucide-react';
+import { Phone, MapPin, Mail, Clock, Star, ArrowUpRight } from 'lucide-react';
 
-const navLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'Services', href: '#services' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Process', href: '#process' },
-  { label: 'About', href: '#about' },
-  { label: 'Reviews', href: '#reviews' },
-  { label: 'Contact', href: '#contact' },
+const footerLinks = [
+  {
+    title: 'Services',
+    links: [
+      { label: 'Interior Design & Space Planning', href: '#services' },
+      { label: 'Home Renovations & Remodeling', href: '#services' },
+      { label: 'Kitchen Design & Installation', href: '#services' },
+      { label: 'Bathroom Remodeling', href: '#services' },
+      { label: 'Commercial Interior Design', href: '#services' },
+    ],
+  },
+  {
+    title: 'Company',
+    links: [
+      { label: 'Our Projects', href: '#projects' },
+      { label: 'Our Process', href: '#process' },
+      { label: 'About Us', href: '#about' },
+      { label: 'Reviews', href: '#reviews' },
+      { label: 'Contact', href: '#contact' },
+    ],
+  },
 ];
 
-export function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : '';
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [open]);
-
+export function Footer() {
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'bg-cream-50/95 shadow-[0_8px_30px_-12px_rgba(17,22,28,0.18)] backdrop-blur-xl'
-          : 'bg-transparent'
-      }`}
-    >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
-        <a href="#home" className="group flex items-center gap-3" aria-label="Berkshire Luxury Interiors home">
-          <Logo scrolled={scrolled} />
-          <span className="flex flex-col leading-none">
-            <span
-              className={`font-serif text-lg font-semibold tracking-tight transition-colors ${
-                scrolled ? 'text-ink-900' : 'text-cream-50'
-              }`}
-            >
-              Berkshire
-            </span>
-            <span
-              className={`text-[0.625rem] font-medium uppercase tracking-[0.28em] transition-colors ${
-                scrolled ? 'text-emerald-700' : 'text-cream-200'
-              }`}
-            >
-              Luxury Interiors
-            </span>
-          </span>
-        </a>
-
-        <ul className="hidden items-center gap-8 lg:flex">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className={`text-sm font-medium transition-colors duration-300 hover:text-emerald-600 ${
-                  scrolled ? 'text-ink-700' : 'text-cream-100'
-                }`}
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        <div className="hidden items-center gap-4 lg:flex">
-          <div
-            className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold ${
-              scrolled ? 'bg-cream-100 text-ink-700' : 'bg-white/10 text-cream-50 backdrop-blur'
-            }`}
-          >
-            <Star size={13} className="fill-emerald-600 text-emerald-600" />
-            4.8
-            <span className={scrolled ? 'text-ink-400' : 'text-cream-200'}>(18)</span>
+    <footer className="relative overflow-hidden bg-ink-950 text-cream-100">
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.05]"
+        style={{
+          backgroundImage:
+            'radial-gradient(circle at 20% 20%, #10b981 0, transparent 40%), radial-gradient(circle at 80% 80%, #047857 0, transparent 40%)',
+        }}
+      />
+      <div className="relative mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
+        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
+          <div>
+            <div className="flex items-center gap-3">
+              <img src="/images/logo-icon.png" alt="Berkshire Luxury Interiors" className="h-10 w-auto" />
+              <span className="flex flex-col leading-none">
+                <span className="font-serif text-lg font-semibold text-cream-50">Berkshire</span>
+                <span className="text-[0.625rem] font-medium uppercase tracking-[0.28em] text-emerald-400">
+                  Luxury Interiors
+                </span>
+              </span>
+            </div>
+            <p className="mt-5 max-w-xs text-sm leading-relaxed text-cream-200/70">
+              Nairobi’s trusted name in luxury interiors and construction. We turn houses into
+              refined homes — with craftsmanship you can feel.
+            </p>
+            <div className="mt-5 flex items-center gap-2 text-sm text-cream-200/80">
+              <Star size={15} className="fill-emerald-500 text-emerald-500" />
+              <span className="font-semibold text-cream-50">4.8</span>
+              <span>· 18 Google reviews</span>
+            </div>
           </div>
-          <a
-            href="tel:0713496125"
-            className="group inline-flex items-center gap-2 rounded-full bg-ink-900 px-5 py-2.5 text-sm font-semibold text-cream-50 transition-all duration-300 hover:bg-emerald-700"
-          >
-            <Phone size={15} className="transition-transform group-hover:-rotate-12" />
-            0713 496125
-          </a>
+
+          {footerLinks.map((col) => (
+            <div key={col.title}>
+              <h4 className="font-sans text-xs font-semibold uppercase tracking-[0.22em] text-emerald-400">
+                {col.title}
+              </h4>
+              <ul className="mt-5 space-y-3">
+                {col.links.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      className="group inline-flex items-center gap-1 text-sm text-cream-200/80 transition-colors hover:text-emerald-300"
+                    >
+                      {link.label}
+                      <ArrowUpRight
+                        size={13}
+                        className="opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:opacity-100"
+                      />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+
+          <div>
+            <h4 className="font-sans text-xs font-semibold uppercase tracking-[0.22em] text-emerald-400">
+              Get in Touch
+            </h4>
+            <ul className="mt-5 space-y-4 text-sm">
+              <li className="flex items-start gap-3">
+                <MapPin size={16} className="mt-0.5 shrink-0 text-emerald-400" />
+                <span className="text-cream-200/80">Woodlands Mall, Wood Ave, Nairobi</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <Phone size={16} className="mt-0.5 shrink-0 text-emerald-400" />
+                <a href="tel:0713496125" className="text-cream-200/80 transition-colors hover:text-emerald-300">
+                  0713 496125
+                </a>
+              </li>
+              <li className="flex items-start gap-3">
+                <Mail size={16} className="mt-0.5 shrink-0 text-emerald-400" />
+                <a
+                  href="mailto:berkshireluxuryinteriors@gmail.com"
+                  className="text-cream-200/80 transition-colors hover:text-emerald-300"
+                >
+                  berkshireluxuryinteriors@gmail.com
+                </a>
+              </li>
+              <li className="flex items-start gap-3">
+                <Clock size={16} className="mt-0.5 shrink-0 text-emerald-400" />
+                <span className="text-cream-200/80">Mon – Sat: 8:00am – 6:00pm</span>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <button
-          onClick={() => setOpen((v) => !v)}
-          className={`inline-flex items-center justify-center rounded-full p-2 transition-colors lg:hidden ${
-            scrolled ? 'text-ink-900 hover:bg-ink-100' : 'text-cream-50 hover:bg-white/10'
-          }`}
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          aria-expanded={open}
-        >
-          {open ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </nav>
-
-      {/* Mobile menu */}
-      <div
-        className={`overflow-hidden bg-cream-50 transition-[max-height,opacity] duration-500 lg:hidden ${
-          open ? 'max-h-[90vh] opacity-100' : 'max-h-0 opacity-0'
-        }`}
-      >
-        <div className="flex flex-col gap-1 px-5 py-4 sm:px-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={() => setOpen(false)}
-              className="rounded-2xl px-4 py-3 text-base font-medium text-ink-800 transition-colors hover:bg-emerald-50 hover:text-emerald-700"
-            >
-              {link.label}
-            </a>
-          ))}
-          <a
-            href="tel:0713496125"
-            onClick={() => setOpen(false)}
-            className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-ink-900 px-6 py-3.5 text-sm font-semibold text-cream-50"
-          >
-            <Phone size={16} /> Call 0713 496125
-          </a>
+        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-cream-200/10 pt-8 text-center sm:flex-row sm:text-left">
+          <p className="text-xs text-cream-200/50">
+            © {new Date().getFullYear()} Berkshire Luxury Interiors Kenya Ltd. All rights reserved.
+          </p>
+          <p className="text-xs text-cream-200/50">
+            Proudly crafted in Nairobi, Kenya
+          </p>
         </div>
       </div>
-    </header>
-  );
-}
-
-function Logo({ scrolled: _scrolled }: { scrolled: boolean }) {
-  return (
-    <img
-      src="/images/logo-icon.png"
-      alt="Berkshire Luxury Interiors"
-      className="h-9 w-auto sm:h-10"
-    />
+    </footer>
   );
 }
