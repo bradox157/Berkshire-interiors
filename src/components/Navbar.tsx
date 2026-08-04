@@ -134,16 +134,12 @@ export function Navbar() {
   );
 }
 
-function Logo({ scrolled }: { scrolled: boolean }) {
+function Logo({ scrolled: _scrolled }: { scrolled: boolean }) {
   return (
-    <span
-      className={`grid h-11 w-11 place-items-center rounded-xl border transition-colors duration-500 ${
-        scrolled
-          ? 'border-emerald-300 bg-emerald-50 text-emerald-700'
-          : 'border-white/30 bg-white/10 text-cream-50 backdrop-blur'
-      }`}
-    >
-      <span className="font-serif text-xl font-bold leading-none">B</span>
-    </span>
+    <img
+      src="/images/logo-icon.png"
+      alt="Berkshire Luxury Interiors"
+      className="h-9 w-auto sm:h-10"
+    />
   );
 }
