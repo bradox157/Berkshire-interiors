@@ -4,20 +4,20 @@ const footerLinks = [
   {
     title: 'Services',
     links: [
-      { label: 'Interior Decorating', href: '#services' },
-      { label: 'Exterior Painting', href: '#services' },
-      { label: 'Remodelling', href: '#services' },
-      { label: 'Floor Fitting', href: '#services' },
-      { label: 'Construction', href: '#services' },
+      { label: 'Interior Design & Space Planning', href: '#services' },
+      { label: 'Home Renovations & Remodeling', href: '#services' },
+      { label: 'Kitchen Design & Installation', href: '#services' },
+      { label: 'Bathroom Remodeling', href: '#services' },
+      { label: 'Commercial Interior Design', href: '#services' },
     ],
   },
   {
     title: 'Company',
     links: [
-      { label: 'About Us', href: '#about' },
       { label: 'Our Projects', href: '#projects' },
-      { label: 'Reviews', href: '#reviews' },
       { label: 'Our Process', href: '#process' },
+      { label: 'About Us', href: '#about' },
+      { label: 'Reviews', href: '#reviews' },
       { label: 'Contact', href: '#contact' },
     ],
   },
