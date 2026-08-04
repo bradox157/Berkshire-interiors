@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { Project } from '@/data/projects';
 import { MapPin, ArrowUpRight } from 'lucide-react';
 
@@ -7,22 +7,48 @@ type ProjectCardProps = {
   className?: string;
 };
 
+const AUTO_CYCLE_MS = 2200;
+
 export function ProjectCard({ project, className = '' }: ProjectCardProps) {
   const hasBeforeAfter = Boolean(project.beforeImage);
   const [showBefore, setShowBefore] = useState(false);
+  const [paused, setPaused] = useState(false);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const activeImage = showBefore && project.beforeImage ? project.beforeImage : project.image;
+  useEffect(() => {
+    if (!hasBeforeAfter || paused) return;
+    intervalRef.current = setInterval(() => {
+      setShowBefore((prev) => !prev);
+    }, AUTO_CYCLE_MS);
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [hasBeforeAfter, paused]);
 
   return (
     <div
       className={`group relative overflow-hidden rounded-2xl shadow-lg shadow-ink-900/5 ${className}`}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
     >
+      {/* Base "after" image */}
       <img
-        src={activeImage}
-        alt={`${project.title}${hasBeforeAfter ? (showBefore ? ' — before' : ' — after') : ''}`}
+        src={project.image}
+        alt={`${project.title}${hasBeforeAfter ? ' — after' : ''}`}
         className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
         loading="lazy"
       />
+      {/* Crossfaded "before" image, only rendered when the project has one */}
+      {hasBeforeAfter && (
+        <img
+          src={project.beforeImage}
+          alt={`${project.title} — before`}
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-in-out ${
+            showBefore ? 'opacity-100' : 'opacity-0'
+          }`}
+          loading="lazy"
+        />
+      )}
       <div className="absolute inset-0 bg-gradient-to-t from-ink-950/85 via-ink-950/20 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-95" />
 
       {/* Type / category tag */}
@@ -30,7 +56,7 @@ export function ProjectCard({ project, className = '' }: ProjectCardProps) {
         {project.type} · {project.category}
       </span>
 
-      {/* Before / After toggle */}
+      {/* Before / After indicator — auto-cycles; click to jump + pause on hover */}
       {hasBeforeAfter && (
         <div className="absolute right-4 top-4 z-10 flex items-center rounded-full bg-ink-950/60 p-1 backdrop-blur">
           <button
