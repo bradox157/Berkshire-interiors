@@ -9,9 +9,9 @@ import { Phone, MapPin, Mail, Clock, CheckCircle2, AlertCircle, Loader2 } from '
 type Status = 'idle' | 'submitting' | 'success' | 'error';
 
 const contactInfo = [
-  { icon: MapPin, label: 'Visit us', value: 'Woodlands Mall, Wood Ave, Nairobi' },
+  { icon: MapPin, label: 'Visit us', value: 'Karen, Nairobi' },
   { icon: Phone, label: 'Call us', value: '0713 496125', href: 'tel:0713496125' },
-  { icon: Mail, label: 'Email us', value: 'berkshireluxuryinteriors@gmail.com', href: 'mailto:berkshireluxuryinteriors@gmail.com' },
+  { icon: Mail, label: 'Email us', value: 'berkshireluxuryinteriorske@gmail.com', href: 'mailto:berkshireluxuryinteriorske@gmail.com' },
   { icon: Clock, label: 'Working hours', value: 'Mon – Sat: 8:00am – 6:00pm' },
 ];
 
@@ -72,7 +72,7 @@ export function Contact() {
               <div>
                 <h3 className="font-serif text-2xl font-medium text-cream-50">Studio details</h3>
                 <p className="mt-3 text-sm leading-relaxed text-cream-200/70">
-                  Based at Woodlands Mall in the heart of Nairobi — convenient for clients across the city.
+                 Based in Karen, Nairobi — convenient for clients across the city.
                   Pop in for a consultation or reach us any of the ways below.
                 </p>
 
