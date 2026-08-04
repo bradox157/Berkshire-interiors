@@ -87,7 +87,7 @@ export function Footer() {
             <ul className="mt-5 space-y-4 text-sm">
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="mt-0.5 shrink-0 text-emerald-400" />
-                <span className="text-cream-200/80">Woodlands Mall, Wood Ave, Nairobi</span>
+                <span className="text-cream-200/80">Karen, Nairobi</span>
               </li>
               <li className="flex items-start gap-3">
                 <Phone size={16} className="mt-0.5 shrink-0 text-emerald-400" />
@@ -98,10 +98,10 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <Mail size={16} className="mt-0.5 shrink-0 text-emerald-400" />
                 <a
-                  href="mailto:berkshireluxuryinteriors@gmail.com"
+                  href="mailto:berkshireluxuryinteriorske@gmail.com"
                   className="text-cream-200/80 transition-colors hover:text-emerald-300"
                 >
-                  berkshireluxuryinteriors@gmail.com
+                  berkshireluxuryinteriorske@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
