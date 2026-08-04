@@ -53,7 +53,7 @@ export function Navbar() {
                 scrolled ? 'text-emerald-700' : 'text-cream-200'
               }`}
             >
-              Luxury Interiors
+              Luxury Interiors Kenya
             </span>
           </span>
         </a>
