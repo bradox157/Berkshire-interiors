@@ -1,29 +1,32 @@
 import { useEffect, useRef, useState } from 'react';
-import type { Project } from '@/data/projects';
-import { MapPin, ArrowUpRight } from 'lucide-react';
+import type { ProjectGroup } from '@/data/projects';
+import { MapPin } from 'lucide-react';
 
 type ProjectCardProps = {
-  project: Project;
+  project: ProjectGroup;
   className?: string;
 };
 
-const AUTO_CYCLE_MS = 2200;
+const AUTO_CYCLE_MS = 2600;
 
 export function ProjectCard({ project, className = '' }: ProjectCardProps) {
-  const hasBeforeAfter = Boolean(project.beforeImage);
-  const [showBefore, setShowBefore] = useState(false);
+  const { images } = project;
+  const hasMultiple = images.length > 1;
+  const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
-    if (!hasBeforeAfter || paused) return;
+    if (!hasMultiple || paused) return;
     intervalRef.current = setInterval(() => {
-      setShowBefore((prev) => !prev);
+      setIndex((prev) => (prev + 1) % images.length);
     }, AUTO_CYCLE_MS);
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [hasBeforeAfter, paused]);
+  }, [hasMultiple, paused, images.length]);
+
+  const current = images[index];
 
   return (
     <div
@@ -31,24 +34,18 @@ export function ProjectCard({ project, className = '' }: ProjectCardProps) {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {/* Base "after" image */}
-      <img
-        src={project.image}
-        alt={`${project.title}${hasBeforeAfter ? ' — after' : ''}`}
-        className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-        loading="lazy"
-      />
-      {/* Crossfaded "before" image, only rendered when the project has one */}
-      {hasBeforeAfter && (
+      {/* Stacked, crossfaded images */}
+      {images.map((img, i) => (
         <img
-          src={project.beforeImage}
-          alt={`${project.title} — before`}
+          key={img.src}
+          src={img.src}
+          alt={`${project.title} — ${img.caption}`}
           className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-in-out ${
-            showBefore ? 'opacity-100' : 'opacity-0'
+            i === index ? 'opacity-100' : 'opacity-0'
           }`}
           loading="lazy"
         />
-      )}
+      ))}
       <div className="absolute inset-0 bg-gradient-to-t from-ink-950/85 via-ink-950/20 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-95" />
 
       {/* Type / category tag */}
@@ -56,52 +53,42 @@ export function ProjectCard({ project, className = '' }: ProjectCardProps) {
         {project.type} · {project.category}
       </span>
 
-      {/* Before / After indicator — auto-cycles; click to jump + pause on hover */}
-      {hasBeforeAfter && (
-        <div className="absolute right-4 top-4 z-10 flex items-center rounded-full bg-ink-950/60 p-1 backdrop-blur">
-          <button
-            type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              setShowBefore(true);
-            }}
-            className={`rounded-full px-2.5 py-1 text-[0.625rem] font-bold uppercase tracking-[0.1em] transition-colors ${
-              showBefore ? 'bg-cream-50 text-ink-900' : 'text-cream-100/70 hover:text-cream-50'
-            }`}
-          >
-            Before
-          </button>
-          <button
-            type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              setShowBefore(false);
-            }}
-            className={`rounded-full px-2.5 py-1 text-[0.625rem] font-bold uppercase tracking-[0.1em] transition-colors ${
-              !showBefore ? 'bg-emerald-500 text-ink-950' : 'text-cream-100/70 hover:text-cream-50'
-            }`}
-          >
-            After
-          </button>
-        </div>
-      )}
-
-      {/* Hover arrow (only when no before/after toggle occupies that corner) */}
-      {!hasBeforeAfter && (
-        <span className="absolute right-4 top-4 grid h-9 w-9 translate-y-2 place-items-center rounded-full bg-emerald-500 text-ink-950 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-          <ArrowUpRight size={16} />
+      {/* Photo count badge */}
+      {hasMultiple && (
+        <span className="absolute right-4 top-4 z-10 rounded-full bg-ink-950/60 px-2.5 py-1 text-[0.625rem] font-bold text-cream-100 backdrop-blur">
+          {index + 1} / {images.length}
         </span>
       )}
 
-      {/* Caption */}
+      {/* Caption + dot navigation */}
       <div className="absolute inset-x-0 bottom-0 p-5">
         <h3 className="font-serif text-xl font-medium text-cream-50">{project.title}</h3>
-        <div className="mt-1.5 flex items-center gap-1.5 text-xs text-cream-200/80">
+        <div className="mt-1 flex items-center gap-1.5 text-xs text-cream-200/80">
           <MapPin size={12} className="text-emerald-300" />
           {project.location}
+          <span className="text-cream-200/40">·</span>
+          <span className="text-cream-200/80">{current.caption}</span>
         </div>
+
+        {hasMultiple && (
+          <div className="mt-3 flex gap-1.5">
+            {images.map((img, i) => (
+              <button
+                key={img.src}
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setIndex(i);
+                }}
+                aria-label={`Show photo ${i + 1}`}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  i === index ? 'w-6 bg-emerald-400' : 'w-1.5 bg-cream-50/40 hover:bg-cream-50/70'
+                }`}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
