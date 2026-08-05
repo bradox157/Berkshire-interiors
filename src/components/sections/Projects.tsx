@@ -20,7 +20,7 @@ export function Projects() {
               Work that speaks <span className="italic text-emerald-700">for itself.</span>
             </>
           }
-          description="Residential and commercial projects across Nairobi — browse by type, and toggle Before / After on select transformations."
+          description="Residential and commercial projects across Nairobi — browse by type. Each card cycles through every photo from that category."
         />
 
         {/* Filters */}
